@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: source_orders
+    database: DBT_PROJECT1
+    schema: raw_schema
+
+    tables:
+      - name: orders_status
+      - name: orders_status1

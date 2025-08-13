@@ -37,6 +37,24 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   my_new_project:
-    # Applies to all files under models/example/
     example:
       +materialized: table
+
+snapshots:
+  my_project_name: snapshots
+
+seeds:
+  my_new_project:
+    country_codes: # comma-delimited (default), no extra config needed
+    state:
+      +delimiter: "|"
+    zip_codes:
+      +column_types:
+        zip_code: varchar
+        country_name: varchar
+
+
+
+
+
+

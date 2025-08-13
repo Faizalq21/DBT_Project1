@@ -7,3 +7,4 @@ account_id,
 operation,
 amount,
 FROM DBT_PROJECT1.DBT_LANDING.TRANSACTIONS
+

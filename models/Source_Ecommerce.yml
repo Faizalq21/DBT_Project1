@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: E-Commerce_Source         # <-- This is your custom source name
+    database: DBT_PROJECT1
+    schema: DBT_MFAIZALUDDINQURESHI
+    tables:
+      - name: CUSTOMERS
+      - name: ORDERS
+      - name: ORDER_ITEMS
+      - name: PAYMENTS
+      - name: PRODUCTS
+
+    database: DBT_PROJECT1
+    schema: RAW_SCHEMA
+    tables:
+      - name: RAW_PAYMENTS

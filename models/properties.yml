@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_products
+    description: "Staging model for products with cleaned and standardized product data."
+    columns:
+      - name: PRICE
+        description: "Retail price of the product "
+        tests:
+          - not_null
+
+      - name: category
+        description: "Must be one of the allowed values."
+        tests:
+          - accepted_values:
+              values: ['Grocery','Clothing','Furniture','Electronics']
+
+  - name: stg_payments
+    description: "Staging model for payments containing amounts and details."
+    columns:
+      - name: AMOUNT
+        description: "Amount paid should be zero or positive"
+    tests: 
+      - check_non_negative
+
+      
+  
+

@@ -1,0 +1,1 @@
+select * from {{ source('source_payments', 'RAW_PAYMENTS') }}

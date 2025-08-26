@@ -1,27 +1,106 @@
 version: 2
 
 models:
-  - name: stg_products
-    description: "Staging model for products with cleaned and standardized product data."
-    columns:
-      - name: PRICE
-        description: "Retail price of the product "
-        tests:
-          - not_null
+# -------------------
+  # Bronze Layer
+  # -------------------
+  - name: bronze_orders
+    description: Raw orders data from source system.
 
-      - name: category
-        description: "Must be one of the allowed values."
-        tests:
-          - accepted_values:
-              values: ['Grocery','Clothing','Furniture','Electronics']
+  - name: bronze_customers
+    description: Raw customers data from source system.
+
+  - name: bronze_products
+    description: Raw products data from source system.
+
+  - name: bronze_payments
+    description: Raw payments data from source system.
+
+  # -------------------
+  # Staging Layer
+  # -------------------
+  - name: stg_orders
+    description: Cleaned and typed orders table
+    columns:
+      - name: order_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+      - name: order_date
+        tests: [not_null]
+
+  - name: stg_customers
+    description: Cleaned customers table
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+      - name: email
+        tests: [not_null, unique]
+
+  - name: stg_products
+    description: Cleaned products table
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
 
   - name: stg_payments
-    description: "Staging model for payments containing amounts and details."
+    description: Cleaned payments table
     columns:
-      - name: AMOUNT
-        description: "Amount paid should be zero or positive"
-    tests: 
-      - check_non_negative
+      - name: payment_id
+        tests: [not_null, unique]
+      - name: payment_status
+        tests:
+          - accepted_values:
+              values: ['Success', 'Failed', 'Pending']
+
+  - name: stg_country
+    description: Country seed mapping
+    columns:
+      - name: country_code
+        tests: [not_null, unique]
+
+  # -------------------
+  # Silver Layer
+  # -------------------
+  - name: int_profit_calculation
+    description: Calculates profit by order and product
+    columns:
+      - name: profit
+        tests: [not_null]
+
+  - name: int_order_payments
+    description: Joins orders with payments
+    columns:
+      - name: order_id
+        tests: [not_null]
+
+  # -------------------
+  # Marts Layer
+  # -------------------
+  - name: customer_profit
+    description: Profit summary at customer level
+    columns:
+      - name: customer_id
+        tests: [not_null]
+
+  - name: product_profit
+    description: Profit summary at product level
+    columns:
+      - name: product_id
+        tests: [not_null]
+
+  - name: country_profit_summary
+    description: Profit summary by country and region
+
+  - name: payment_success_rate
+    description: Breakdown of payment status percentage
+
+  - name: unpaid_orders_audit
+    description: Orders that are unpaid or failed
+    columns:
+      - name: order_id
+        tests: [not_null]
+
 
       
   

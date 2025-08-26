@@ -39,9 +39,23 @@ models:
   my_new_project:
     example:
       +materialized: table
+    bronze:
+      +materialized: view
+      +post-hook: "{{ log_model_run(this.name) }}"
+    staging:
+      +materialized: view
+      +post-hook: "{{ log_model_run(this.name) }}"
+    silver:
+      +materialized: table
+      +post-hook: "{{ log_model_run(this.name) }}"
+    marts:
+      +materialized: table
+      +post-hook: "{{ log_model_run(this.name) }}"
+
 
 snapshots:
   my_project_name: snapshots
+  +target_schema: SNAPSHOTS
 
 seeds:
   my_new_project:
@@ -52,6 +66,9 @@ seeds:
       +column_types:
         zip_code: varchar
         country_name: varchar
+
+
+    
 
 
 

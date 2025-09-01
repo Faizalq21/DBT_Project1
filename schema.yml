@@ -1,3 +1,6 @@
+##Below are schema.yml files (docs + tests) for each layer --
+##1.schema.yml for bronze/
+## models/bronze/schema.yml
 version: 2
 
 models:
@@ -100,8 +103,3 @@ models:
     columns:
       - name: order_id
         tests: [not_null]
-
-
-      
-  
-

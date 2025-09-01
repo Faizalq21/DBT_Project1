@@ -13,7 +13,7 @@ SELECT
     transaction_date,
     status,
     last_updated
-FROM {{ source('source_transactions', 'transactions1') }}
+FROM {{ source('source_transactions', 'TRANSACTIONS1') }}
 {% if is_incremental() %}
   -- Only load new data
   WHERE last_updated > (SELECT MAX(last_updated) FROM {{ this }})

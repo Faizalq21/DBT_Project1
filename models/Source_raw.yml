@@ -1,0 +1,11 @@
+version : 2
+
+sources:
+  - name: Source_raw
+    database: SHOP_VERSE_ANALYTICS_DB
+    schema: RAW_SCHEMA
+    tables:
+      - name: RAW_ORDERS
+      - name: RAW_CUSTOMERS
+      - name: RAW_PRODUCTS
+      - name: RAW_PAYMENTS

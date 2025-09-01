@@ -11,7 +11,4 @@ sources:
       - name: PAYMENTS
       - name: PRODUCTS
 
-    database: DBT_PROJECT1
-    schema: RAW_SCHEMA
-    tables:
       - name: RAW_PAYMENTS

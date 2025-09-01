@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 packages:
   - name: dbt_utils
     package: dbt-labs/dbt_utils
@@ -6,3 +7,13 @@ packages:
     package: dbt-labs/codegen
     version: 0.13.1
 sha1_hash: 9c459bb513316be11ab55af0e5113f17444d082e
+=======
+packages:
+  - name: dbt_utils
+    package: dbt-labs/dbt_utils
+    version: 1.3.0
+  - name: codegen
+    package: dbt-labs/codegen
+    version: 0.13.1
+sha1_hash: 9c459bb513316be11ab55af0e5113f17444d082e
+>>>>>>> 6d52f862887c499eb62d0b1c3b062b295bf6c33c

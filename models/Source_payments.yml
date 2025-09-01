@@ -1,8 +1,9 @@
 version: 2
 
 sources:
-  - name: Source_payments         # <-- This is your custom source name
+  - name: source_payments
     database: DBT_PROJECT1
-    schema: RAW_SCHEMA
+    schema: raw_schema
+
     tables:
       - name: RAW_PAYMENTS
